@@ -18,8 +18,21 @@ class DefaultController extends AbstractController {
      * @Route("/user/{username}")
      */
     public function show($username) {
+        if ('marijus' == $username) {
+            $stats = [
+                'Role: Admin',
+                'About: just testing'
+            ];
+        } else {
+            $stats = [
+                'Role: user',
+                'About: this is the "else" block'
+            ];
+        }
+
         return $this->render('default/show.html.twig', [
-            'variable' => "$username"
+            'variable' => "$username",
+            'stats' => $stats
         ]);
         // return new Response("Showing data of $username");
     }
